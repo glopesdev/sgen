@@ -141,6 +141,9 @@ namespace Bonsai.Sgen
                                 new CodeTypeReferenceExpression(typeof(Required)),
                                 property.IsNullable ? nameof(Required.AllowNull) : nameof(Required.Always))));
                     }
+                    jsonProperty.Arguments.Add(new CodeAttributeArgument(
+                            nameof(JsonPropertyAttribute.Order),
+                            new CodePrimitiveExpression(propertyCount)));
                     propertyDeclaration.CustomAttributes.Add(jsonProperty);
                 }
                 if (yamlSerializer)
